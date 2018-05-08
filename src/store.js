@@ -1,6 +1,26 @@
-import createStore from 'react-redux'
-import planimetryReducer from './reducers'
+import { createStore, applyMiddleware } from 'redux';
+import reducers from './reducers'
 
-const initialState = {}
+const initialState = {
+    planimetry: {
+        form: {
+            station: '',
+            point_type: 're',
+            target_point: '',
+            h_distance: '',
+            v_distance: '',
+            hour_angle: '',
+            zenital_angle: '',
+            azimuth: '',
+        },
+        table: []
+    }
+}
 
-createStore(initialState, planimetryReducer);
+
+const store = createStore(
+    reducers, initialState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+export default store;

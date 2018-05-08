@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
-import {updatePlanimetryForm} from '../../actions/actions'
+import {updatePlanimetryForm, clearForm, addFormToTable} from '../../actions/actions'
 
 class Planimetry extends Component{
 
@@ -14,6 +15,7 @@ class Planimetry extends Component{
         ]
 
         this.handleChange = this.handleChange.bind(this);
+        this.saveForm = this.saveForm.bind(this);
     }
 
     handleChange(e){
@@ -21,54 +23,71 @@ class Planimetry extends Component{
             name: e.target.name,
             value: e.target.value
         };
-        updatePlanimetryForm();
+        this.props.updatePlanimetryForm(field);
+    }
+
+    saveForm(){
+        this.props.addFormToTable();
+        this.props.clearForm();
     }
 
     render(){
         return (
-            <div class="form">
+            <div className="form">
                 <header>
-                    <h1 class="title">PLANIMETRIA</h1>
+                    <h1 className="title">PLANIMETRIA</h1>
                 </header>
 
                 <hr/>
 
-                <div class="field-wrapper">
-                    <input type="text" class="input" placeholder="ESTAÇÃO"/><br/>
+                <div className="field-wrapper">
+                    <input type="text" className="input" onChange={this.handleChange} name="station" placeholder="ESTAÇÃO" value={this.props.planimetry_form.station}/><br/>
                 </div>
 
-                <div class="field-wrapper">
-                    <select class="input" onChange={this.handleChange}>
+                <div className="field-wrapper">
+                    <select className="input" name="point_type" onChange={this.handleChange} value={this.props.planimetry_form.point_type}>
                         {
                             this.point_types.map(
-                                (point) => <option value={point.value}>{point.name}</option>
+                                (point, i) => <option value={point.value} key={i}>{point.name}</option>
                             )
                         }
                     </select>
                 </div>
                 
-                <div class="field-wrapper">
-                    <input type="text" class="input" placeholder="X"/><br/>
+                <div className="field-wrapper">
+                    <input type="text" className="input" onChange={this.handleChange} name="target_point" value={this.props.planimetry_form.target_point} placeholder="PONTO VISADO"/><br/>
                 </div>
-                <div class="field-wrapper">
-                    <input type="text" class="input" placeholder="DISTÂNCIA VERTICAL"/><br/>
+                <div className="field-wrapper">
+                    <input type="text" className="input" onChange={this.handleChange} name="h_distance" value={this.props.planimetry_form.h_distance} placeholder="DISTÂNCIA HORIZONTAL"/><br/>
                 </div>
-                <div class="field-wrapper">
-                    <input type="text" class="input" placeholder="ÂNGULO HORÁRIO"/><br/>
+                <div className="field-wrapper">
+                    <input type="text" className="input" onChange={this.handleChange} name="v_distance" value={this.props.planimetry_form.v_distance} placeholder="DISTÂNCIA VERTICAL"/><br/>
                 </div>
-                <div class="field-wrapper">
-                    <input type="text" class="input" placeholder="ÂNGULO ZENITAL"/><br/>
+                <div className="field-wrapper">
+                    <input type="text" className="input" onChange={this.handleChange} name="hour_angle" value={this.props.planimetry_form.hour_angle} placeholder="ÂNGULO HORÁRIO"/><br/>
                 </div>
-                <div class="field-wrapper">
-                        <input type="text" class="input" placeholder="AZIMUTE"/><br/>
+                <div className="field-wrapper">
+                    <input type="text" className="input" onChange={this.handleChange} name="zenital_angle" value={this.props.planimetry_form.zenital_angle} placeholder="ÂNGULO ZENITAL"/><br/>
+                </div>
+                <div className="field-wrapper">
+                    <input type="text" className="input" onChange={this.handleChange} name="azimuth" value={this.props.planimetry_form.azimuth} placeholder="AZIMUTE"/><br/>
                 </div>
 
                 <hr/>
 
-                <button class="btn btn-save center">SALVAR</button>
+                <div className="field-wrapper">
+                    <button className="btn btn-save center" onClick={this.saveForm}>SALVAR</button>
+                </div>
             </div>
         )
     }
 }
 
-export default Planimetry
+export default connect(
+    state => ({planimetry_form: state.planimetry['form']}),
+    {   
+        updatePlanimetryForm, 
+        clearForm, 
+        addFormToTable
+    }
+)(Planimetry)

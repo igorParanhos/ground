@@ -19,6 +19,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
   },
   "devDependencies": {
+    "ajv": "^6.4.0",
     "node-sass-chokidar": "^1.2.2"
   }
 }

@@ -54,17 +54,15 @@
 }
 
 .btn{
-    box-sizing: border-box;
-    height: 40px;
-    width: 100%;
+    min-width: 100%;
     font-weight: 600;
     font-size: 24px;
-    padding: 10px;
+    padding: 15px;
     border-radius: 4px;
 }
 
 .btn-save{
-    background: #71cc84;
+    background: #e4ff6e;
 }
 
 .center{
@@ -78,4 +76,42 @@ hr{
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.menu{
+    width: 100%;
+    margin-bottom: 5px;
+
+    button{
+        width: 50%;
+        font-size: 24px;
+        box-sizing: border-box;
+        padding: 10px;
+        background: #c4bfbf;
+    }
+    .form-btn.selected{
+        background: rgb(216, 216, 216);
+        border-radius: 0 0 5px 0;
+    }
+    .table-btn.selected{
+        background: rgb(216, 216, 216);
+        border-radius: 0 0 0 5px;
+    }
+}
+
+.table{
+    width: 100%;
+    font-size: 8px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-collapse: collapse;
+
+    thead{
+        background: #a4ffa9;
+        border-collapse: collapse;
+    }
+    td{
+        border-collapse: collapse;
+        text-align: center;
+        padding: 5px;
+    }
 }
