@@ -11,7 +11,7 @@ class App extends Component {
 
             <header>
                 <h1 class="title">
-                    Terrain
+                    GROUND!
                 </h1>
             </header>
             <Planimetry/>

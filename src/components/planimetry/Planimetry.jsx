@@ -54,7 +54,7 @@ class Planimetry extends Component{
                     <input type="text" class="input" placeholder="DISTÂNCIA VERTICAL"/><br/>
                 </div>
                 <div class="field-wrapper">
-                    <input type="text" class="input" placeholder="ÂNGULO VERTICAL"/><br/>
+                    <input type="text" class="input" placeholder="ÂNGULO HORÁRIO"/><br/>
                 </div>
                 <div class="field-wrapper">
                     <input type="text" class="input" placeholder="ÂNGULO ZENITAL"/><br/>
@@ -65,7 +65,7 @@ class Planimetry extends Component{
 
                 <hr/>
 
-                <button class="btn btn-save">SALVAR</button>
+                <button class="btn btn-save center">SALVAR</button>
             </div>
         )
     }
