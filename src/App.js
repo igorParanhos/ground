@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Provider} from 'react-redux'
+import DmsCoodinates, {parseDms} from 'dms-conversion'
 
 import logo from './logo.svg';
 import store from './store'
@@ -33,7 +34,7 @@ class App extends Component {
 
                     <header>
                         <h1 className="title">
-                            GROUND!
+                            GROUND! 
                         </h1>
                     </header>
                     

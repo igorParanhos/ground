@@ -15,7 +15,7 @@ class Table extends Component{
         ]
 
         this.handleChange = this.handleChange.bind(this);
-        this.saveForm = this.saveForm.bind(this);
+        this.calculateCorrection = this.calculateCorrection.bind(this);
     }
 
     handleChange(e){
@@ -26,9 +26,8 @@ class Table extends Component{
         this.props.updatePlanimetryForm(field);
     }
 
-    saveForm(){
-        this.props.addFormToTable();
-        this.props.clearForm();
+    calculateCorrection(){
+
     }
 
     render(){
@@ -77,6 +76,9 @@ class Table extends Component{
 
                 <hr/>
 
+                <div className="field-wrapper">
+                    <button className="btn btn-save center" onClick={this.calculateCorrection}>CORRIGIR</button>
+                </div>
             </div>
         )
     }
